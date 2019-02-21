@@ -39,10 +39,10 @@ client.on('message', message => {
    const command = client['commands'].get(commandName)
 
    if (command.needArgs && !args.length) {
-      return message.channel.send(`The ${command} command needs arguments`)
+      return message.channel.send(`The command needs arguments`)
    }
    if (command.needMention && !message.mentions.members.size) {
-      return message.channel.send(`The ${command} command needs @mention`)
+      return message.channel.send(`The command needs @mention`)
    }
 
    try {

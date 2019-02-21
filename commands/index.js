@@ -19,12 +19,19 @@ const commands = {
       needMention: true,
       execute(message) {
          const member = message.mentions.members.first()
+         const permissions = []
+         for (const key in member.permissions) {
+            if (member.permissions.hasOwnProperty(key)) {
+               permissions.push(member.permissions[key]);
+            }
+         }
+         const roles = member.roles.map(rol => rol.id)
          message.channel.send(`
             Username: ${member.user.username}
             \nDisplay name: ${member.displayName}
             \nId: ${member.id}
-            \nPermissions: ${member.permissions}
-            \nRoles: ${member.roles}`
+            \nPermissions: ${permissions}
+            \nRoles: ${roles}`
          )
       }
    },
